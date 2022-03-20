@@ -6,7 +6,7 @@ I have grouped in each script a set of indicators.
 
 # Scripts
 
-## The "Overlay_Indicators.py" script groups the following indicators
+## Script [1] : The "Overlay_Indicators.py" script groups the following indicators
 1. Pivot lines
 2. 4 EMA
 3. EmaTrend
@@ -15,7 +15,7 @@ I have grouped in each script a set of indicators.
 6. VWAP bands
 7. Ichimoku Cloud
 
-## The "Oscillator_Indicators.py" script groups the following indicators
+## Script [2] : The "Oscillator_Indicators.py" script groups the following indicators
 1. Stochastic RSI
 2. Divergence
 3. Money Flow Index
@@ -28,7 +28,7 @@ To add each script as an indicator, follow this steps :
 ![Capture_2022-03-14_15-27-09](https://user-images.githubusercontent.com/48333539/158247768-d5a052b2-b510-4ce6-bc54-9b777dab6be8.png)
 > Script integration.
 
-# "Overlay_Indicators.py”screenshots
+# Script [1] "Overlay_Indicators.py” screenshots
 ![Capture_2022-03-13_06-37-14](https://user-images.githubusercontent.com/48333539/159183697-0897e077-7370-4dc4-97f6-a055489a453b.png)
 > Indicator [1] Pivot lines
 
@@ -49,7 +49,7 @@ To add each script as an indicator, follow this steps :
 > Indicator [7] Ichimoku Cloud
 
 
-# "Oscillator_Indicators.py”screenshots
+# Script [2] "Oscillator_Indicators.py” screenshots
 
 ![Capture_2022-03-20_14-32-08](https://user-images.githubusercontent.com/48333539/159184092-c530b1cc-86d8-41ca-9621-3f51c44841ca.png)
 > 5 in 1 Indicators : Stochastic RSI + Divergence + Money Flow Index + VWAP Z-Scope + MACD
