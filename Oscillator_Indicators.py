@@ -2,19 +2,20 @@
 //@version=5
 ////////////////////////////////////////////////////////////////
 // Author: A.Zerhouani
-// Inspired from : tradingview, LazyBear, RicardoSantos
+// Inspired from : Tradingview, LazyBear, RicardoSantos
 // Source: https://github.com/azerhouani/TradingView_PineScripts
-// Updated: 2022/03/19
-// Version: 4.0
+// Updated: 2022/03/20
+// Version: 5.0
 ////////////////////////////////////////////////////////////////
 
-indicator(title="Stochastic RSI + Divergence + Money Flow Index + VWAP Z-Scope by AliZer", shorttitle="StochRSI+Div+MFI+VWAPZ_Azer", overlay=false, timeframe="", timeframe_gaps=true)
+indicator(title="Stochastic RSI + Divergence + Money Flow Index + VWAP Z-Scope + MACD by AliZer", shorttitle="StochRSI+Div+MFI+VWAPZ+MACD_Azer", overlay=false, timeframe="", timeframe_gaps=true)
 
 //////////////////////////////////////////////////
 //// **** Offset and Coeficient settings **** ////
 //////////////////////////////////////////////////
 stochRsiMFI_offset = 40
 vwapz_coeficient = 10
+macd_offset = 180
 
 //////////////////////////////////////////////////////////
 //// **** Stochastic RSI | shorttitle="StochRSI" **** ////
@@ -173,3 +174,65 @@ plot(showVwapz ? (vwapz__Line1 * vwapz_coeficient) : na,title="ZVWAP1", color=#2
 plot(showVwapz ? (vwapz__Line2 * vwapz_coeficient) : na,title="ZVWAP2", color=#673ab7, linewidth=1)
 plot(showVwapz ? (vwapz__Line3 * vwapz_coeficient) : na,title="ZVWAP3", color=#e91e63, linewidth=1)
 
+
+/////////////////////////////////////////////////////////////////////////////
+//// **** Moving Average Convergence Divergence | shorttitle="MACD" **** ////
+/////////////////////////////////////////////////////////////////////////////
+
+// Group section
+gMacd = "[04]========[ MACD ]===================================="
+
+// Show section
+showMacd = input(true, title="Show MACD ?", group=gMacd)
+
+// Input section
+macd__src = input(title="Source", defval=close, group=gMacd)
+macd__fast_length = input(title="Fast Length", defval=12, group=gMacd)
+macd__slow_length = input(title="Slow Length", defval=26, group=gMacd)
+macd__signal_length = input.int(title="Signal Smoothing",  minval = 1, maxval = 50, defval = 9, group=gMacd)
+macd__sma_source = input.string(title="Oscillator MA Type",  defval="EMA", options=["SMA", "EMA"], group=gMacd)
+macd__sma_signal = input.string(title="Signal Line MA Type", defval="EMA", options=["SMA", "EMA"], group=gMacd)
+
+// Style section
+macd__color = #2962FF // color.blue
+macd__signal_color = #FF6D00 // color.orange
+macd__grow_above_color = #26A69A // color.green strong
+macd__fall_above_color = #B2DFDB // color.green weak
+macd__grow_below_color = #FFCDD2 // color.red weak
+macd__fall_below_color = #FF5252 // color.red strong
+
+// Calculation section
+macd__fast_ma = macd__sma_source == "SMA" ? ta.sma(macd__src, macd__fast_length) : ta.ema(macd__src, macd__fast_length)
+macd__slow_ma = macd__sma_source == "SMA" ? ta.sma(macd__src, macd__slow_length) : ta.ema(macd__src, macd__slow_length)
+macd = macd__fast_ma - macd__slow_ma
+macd__signal = macd__sma_signal == "SMA" ? ta.sma(macd, macd__signal_length) : ta.ema(macd, macd__signal_length)
+macd__hist = macd - macd__signal
+
+//================================
+//Normalize Function when min/max unknown
+normalize(_src, _min, _max) => 
+    // Normalizes series with unknown min/max using historical min/max.
+    // _src: series to rescale.
+    // _min: minimum value of rescaled series.
+    // _max: maximum value of rescaled series.
+    var _historicMin = +10e10
+    var _historicMax = -10e10
+    _historicMin := math.min(nz(_src, _historicMin), _historicMin)
+    
+    //_historicMax := math.max(nz(_src, _historicMax), _historicMax)
+    _historicMax := _historicMin - (_historicMin * 2)
+    
+    _min + (_max - _min) * (_src - _historicMin) / math.max(_historicMax - _historicMin, 10e-10)
+//================================
+
+// Scaling section
+hist_scaled = normalize(macd__hist, -70.0, 70.0)
+macd_scaled = normalize(macd, -50.0, 50.0)
+//sign_scaled = macd_scaled - hist_scaled
+
+
+// Plot section
+hline(showMacd ? macd_offset : na, "MACD Histogram Base", color=color.new(color.gray, 80))
+plot(showMacd ? (hist_scaled + macd_offset) : na, title="Histogram", histbase=macd_offset, style=plot.style_columns, color=(macd__hist>=0 ? (macd__hist[1] < macd__hist ? macd__grow_above_color : macd__fall_above_color) : (macd__hist[1] < macd__hist ? macd__grow_below_color : macd__fall_below_color)))
+plot(showMacd ? (macd_scaled + macd_offset) : na, title="MACD", color=color.yellow, linewidth=2)
+//plot(showMacd ? (sign_scaled + macd_offset) : na, title="Signal", color=macd__signal_color)
