@@ -24,8 +24,7 @@ I have grouped in each script a set of indicators.
 
 # TradingView integration
 To add each script as an indicator, follow this steps :
-
-![Capture_2022-03-14_15-27-09](https://user-images.githubusercontent.com/48333539/158247768-d5a052b2-b510-4ce6-bc54-9b777dab6be8.png)
+![Capture_2022-04-19_16-52-33](https://user-images.githubusercontent.com/48333539/164094740-ae13f84c-a105-40f2-afb4-acaabe73ae51.png)
 > Script integration.
 
 # Script [1] "Overlay_Indicators.py” screenshots
