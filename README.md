@@ -22,6 +22,11 @@ I have grouped in each script a set of indicators.
 4. VWAP Z-Scope
 5. MACD
 
+## Script [3] : The "Scalping_STC+RSI+CCI+MA.py" script groups the following indicators
+1. STC
+2. RSI
+3. CCI+MA
+
 # TradingView integration
 To add each script as an indicator, follow this steps :
 ![Capture_2022-04-19_16-52-33](https://user-images.githubusercontent.com/48333539/164094740-ae13f84c-a105-40f2-afb4-acaabe73ae51.png)
@@ -53,4 +58,8 @@ To add each script as an indicator, follow this steps :
 ![Capture_2022-03-20_14-32-08](https://user-images.githubusercontent.com/48333539/159184092-c530b1cc-86d8-41ca-9621-3f51c44841ca.png)
 > 5 in 1 Indicators : Stochastic RSI + Divergence + Money Flow Index + VWAP Z-Scope + MACD
 
+# Script [3] "Scalping_STC+RSI+CCI+MA.py” screenshots
+
+![Capture_2022-05-01_13-34-38](https://user-images.githubusercontent.com/48333539/166158049-5a3524c2-e81c-407b-83f8-fe92cf54525f.png)
+> 3 in 1 Indicators : STC + RSI + CCI(+MA)
 # لا تنسوني من صالح دعائكم
