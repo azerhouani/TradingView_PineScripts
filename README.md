@@ -15,14 +15,24 @@ I have grouped in each script a set of indicators.
 6. VWAP bands
 7. Ichimoku Cloud
 
-## Script [2] : The "Oscillator_Indicators.py" script groups the following indicators
-1. Stochastic RSI
-2. Divergence
-3. Money Flow Index
-4. VWAP Z-Scope
+## Script [2] : The "Multi-Oscillator_8.py" script groups the following indicators (from bottom to up) :
+1. CCI
+2. VWAP Z-Scope
+3. RSI
+4. Stochastic RSI
+5. Divergence
+6. Money Flow Index
+7. STC
+8. MACD
+
+## Script [3] : The "Multi-Oscillator_5.py" script groups the following indicators (from bottom to up) :
+1. VWAP Z-Scope
+2. Stochastic RSI
+3. Divergence
+4. Money Flow Index
 5. MACD
 
-## Script [3] : The "Scalping_STC+RSI+CCI+MA.py" script groups the following indicators
+## Script [4] : The "Scalping_STC+RSI+CCI+MA.py" script groups the following indicators (from bottom to up) :
 1. STC
 2. RSI
 3. CCI+MA
@@ -53,7 +63,7 @@ To add each script as an indicator, follow this steps :
 > Indicator [7] Ichimoku Cloud
 
 
-# Script [2] "Oscillator_Indicators.py” screenshots
+# Script [2] "Multi-Oscillator_5.py” screenshots
 
 ![Capture_2022-03-20_14-32-08](https://user-images.githubusercontent.com/48333539/159184092-c530b1cc-86d8-41ca-9621-3f51c44841ca.png)
 > 5 in 1 Indicators : Stochastic RSI + Divergence + Money Flow Index + VWAP Z-Scope + MACD
